@@ -1,15 +1,15 @@
-{% extends 'blog/base.html' %}
-{% load text_filter %}
-
-{% block content %}
-    {% for post in posts %}
-        <div class="post">
-            <div class="date">
-                {{ post.published_date }}
-            </div>
-            <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
-            <p>{{ post.text|truncate_text:300 }}</p>
-            <a href="{% url 'post_detail' pk=post.pk %}">Comments: {{ post.approved_comments.count }}</a>
-        </div>
-    {% endfor %}
-{% endblock content %}
+{% extends 'blog/base.html' %} {% load text_filter %} {% block content %} {% for post in posts %}
+<div class="row">
+  <div class="col-sm-8 col-md-12">
+    <div class="thumbnail">
+      <div class="caption">
+        <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1> <span style="display:block; height: 10;"></span>
+        <div class="date"> {{ post.published_date }} </div> <span style="display:block; height: 20;"></span>
+        <p>{{ post.text|truncate_text:300 }}</p> <a href="{% url 'post_detail' pk=post.pk %}">Comments: {{ post.approved_comments.count }}</a> </div>
+    </div>
+  </div>
+</div>
+<!-- <div class="post">
+  <div class="date"> {{ post.published_date }} </div>
+  <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
+  <p>{{ post.text|truncate_text:300 }}</p> <a href="{% url 'post_detail' pk=post.pk %}">Comments: {{ post.approved_comments.count }}</a> </div>  -->{% endfor %} {% endblock content %}
